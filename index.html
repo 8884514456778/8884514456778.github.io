@@ -9,25 +9,27 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
 	url=location.href;
+
+	url = url.replace("&","55555");
+
+	//为了解决微信客户端会在你的链接末尾加入其它参数，如果不是动态获取当前链接，将导致分享后的页面签名失败问题。把链接地址中出现的&替换临时字符。否则后台处理就得不到完整的地址链接了。
+
+
 	$.ajax({
 		type : "get",
-		url : "http://www201703gsactivitydldltaxicomcn.xyjxth.com.cn/api/jssdk.php?url="+url,//替换网址，xxx根据自己jssdk文件位置修改
+		url : "http://wwwgsactivitydldltaxicomcn.fshzh.cn/api/jssdk.php?url="+url,
 		dataType : "jsonp",
 		jsonp: "callback",
 		jsonpCallback:"success_jsonpCallback",
 		success : function(data){
-			console.log(data);
-			alert("成功");
 			wx.config({
 				appId: data.appId,
 				timestamp: data.timestamp,
 				nonceStr: data.nonceStr,
 				signature: data.signature,
 				jsApiList: [
-					"onMenuShareTimeline", //分享给好友
-					"onMenuShareAppMessage", //分享到朋友圈
-					"onMenuShareQQ",  //分享到QQ
-					"onMenuShareWeibo" //分享到微博
+					"onMenuShareTimeline",
+					"onMenuShareAppMessage"
 				]
 			});
 		},
@@ -35,34 +37,15 @@
 			alert("连接失败！");
 		}
 	});
-	wx.ready(function () {
-// 在这里调用 API
-
-		wx.onMenuShareAppMessage({
-			title: '低价叫车，轻松出行',
-			desc: '',
-			link: 'https://tobooks.github.io',
-			imgUrl: 'http://7xw155.com1.z0.glb.clouddn.com/hdImg_727142f716d959734ee47be764ef4ce714709053369.jpg',
-			type: '', // 分享类型,music、video或link，不填默认为link
-			dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-			success: function () {
-				alert(123);
-			},
-
-		});
-
-		wx.onMenuShareTimeline({
-			title: '滴滴周年庆,领滴滴百元红包[时间：3月10日-3月31日]',
-			link: 'https://tobooks.github.io',
-			imgUrl: 'http://7xw155.com1.z0.glb.clouddn.com/hdImg_727142f716d959734ee47be764ef4ce714709053369.jpg',
-			success: function () {
-				//succShare();
-				alert(123);
-			},
-
-		});
-
-
+	wx.ready(function (){
+		var shareData = {
+			title: '霾黄色预警昨发布 冷空气昨夜到温 雾霾可能消散',
+			desc: '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。',
+			link: 'http://news.wendu.cn/2015/0127/482049.shtml',
+			imgUrl: 'http://upload.wendu.cn/2015/0127/1422306020538.jpg'
+		};
+		wx.onMenuShareAppMessage(shareData);
+		wx.onMenuShareTimeline(shareData);
 	});
 </script>
 </body>
