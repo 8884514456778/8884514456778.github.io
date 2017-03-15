@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+	url=location.href;
+	$.ajax({
+		type : "get",
+		url : "http://www201703gsactivitydldltaxicomcn.xyjxth.com.cn/api/jssdk.php?url="+url,//替换网址，xxx根据自己jssdk文件位置修改
+		dataType : "jsonp",
+		jsonp: "callback",
+		jsonpCallback:"success_jsonpCallback",
+		success : function(data){
+			console.log(data);
+			alert("成功");
+			wx.config({
+				appId: data.appId,
+				timestamp: data.timestamp,
+				nonceStr: data.nonceStr,
+				signature: data.signature,
+				jsApiList: [
+					"onMenuShareTimeline", //分享给好友
+					"onMenuShareAppMessage", //分享到朋友圈
+					"onMenuShareQQ",  //分享到QQ
+					"onMenuShareWeibo" //分享到微博
+				]
+			});
+		},
+		error:function(data){
+			alert("连接失败！");
+		}
+	});
+	wx.ready(function () {
+// 在这里调用 API
+
+		wx.onMenuShareAppMessage({
+			title: '低价叫车，轻松出行',
+			desc: '',
+			link: 'https://tobooks.github.io',
+			imgUrl: 'http://7xw155.com1.z0.glb.clouddn.com/hdImg_727142f716d959734ee47be764ef4ce714709053369.jpg',
+			type: '', // 分享类型,music、video或link，不填默认为link
+			dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			success: function () {
+				alert(123);
+			},
+
+		});
+
+		wx.onMenuShareTimeline({
+			title: '滴滴周年庆,领滴滴百元红包[时间：3月10日-3月31日]',
+			link: 'https://tobooks.github.io',
+			imgUrl: 'http://7xw155.com1.z0.glb.clouddn.com/hdImg_727142f716d959734ee47be764ef4ce714709053369.jpg',
+			success: function () {
+				//succShare();
+				alert(123);
+			},
+
+		});
+
+
+	});
+</script>
+</body>
+</html>
